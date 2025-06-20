@@ -7,47 +7,59 @@
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
-      max-width: 800px;
+      max-width: 1200px;
       margin: auto;
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
     }
-    input, button, textarea {
+    .left, .right {
+      flex: 1;
+    }
+    input, button, textarea, label {
       width: 100%;
       margin: 10px 0;
       padding: 10px;
+      box-sizing: border-box;
     }
     textarea {
-      height: 150px;
+      height: 500px;
       resize: none;
     }
   </style>
 </head>
 <body>
-  <h1>GREEN-API Integration</h1>
-  
-  <label for="idInstance">idInstance:</label>
-  <input type="text" id="idInstance" placeholder="Enter idInstance">
+  <div class="left">
+    <h1>GREEN-API Integration</h1>
 
-  <label for="apiTokenInstance">ApiTokenInstance:</label>
-  <input type="text" id="apiTokenInstance" placeholder="Enter ApiTokenInstance">
+    <label for="idInstance">idInstance:</label>
+    <input type="text" id="idInstance" placeholder="Enter idInstance">
 
-  <button onclick="callMethod('getSettings')">getSettings</button>
-  <button onclick="callMethod('getStateInstance')">getStateInstance</button>
+    <label for="apiTokenInstance">ApiTokenInstance:</label>
+    <input type="text" id="apiTokenInstance" placeholder="Enter ApiTokenInstance">
 
-  <label for="chatId">Chat ID:</label>
-  <input type="text" id="chatId" placeholder="example: 79001112233@c.us">
+    <button onclick="callMethod('getSettings')">getSettings</button>
+    <button onclick="callMethod('getStateInstance')">getStateInstance</button>
 
-  <label for="message">Message:</label>
-  <input type="text" id="message" placeholder="Enter your message">
-  <button onclick="callMethod('sendMessage')">sendMessage</button>
+    <label for="chatId">Chat ID:</label>
+    <input type="text" id="chatId" placeholder="example: 79001112233@c.us">
 
-  <label for="fileUrl">File URL:</label>
-  <input type="text" id="fileUrl" placeholder="https://example.com/file.pdf">
-  <label for="caption">File caption:</label>
-  <input type="text" id="caption" placeholder="Optional caption">
-  <button onclick="callMethod('sendFileByUrl')">sendFileByUrl</button>
+    <label for="message">Message:</label>
+    <input type="text" id="message" placeholder="Enter your message">
+    <button onclick="callMethod('sendMessage')">sendMessage</button>
 
-  <h3>Response Output:</h3>
-  <textarea id="response" readonly></textarea>
+    <label for="fileUrl">File URL:</label>
+    <input type="text" id="fileUrl" placeholder="https://example.com/file.pdf">
+
+    <label for="caption">File caption:</label>
+    <input type="text" id="caption" placeholder="Optional caption">
+    <button onclick="callMethod('sendFileByUrl')">sendFileByUrl</button>
+  </div>
+
+  <div class="right">
+    <h3>Response Output:</h3>
+    <textarea id="response" readonly></textarea>
+  </div>
 
   <script>
     async function callMethod(method) {
